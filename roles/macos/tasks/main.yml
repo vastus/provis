@@ -1,0 +1,20 @@
+---
+- name: install quick look plugins
+  homebrew_cask: name={{ item }}
+  with_items:
+    - qlcolorcode
+    - qlstephen
+    - qlmarkdown
+    - webpquicklook
+    - qlvideo
+
+- name: install apps
+  homebrew_cask: name={{ item }}
+  with_items:
+    - google-chrome
+    - vlc
+
+- name: install clis
+  homebrew: name={{ item }}
+  with_items:
+    - rbenv

@@ -1,0 +1,6 @@
+---
+- name: create aws directory
+  file: path=~/.aws state=directory
+
+- name: copy the aws credentials file
+  copy: src=credentials dest=~/.aws/credentials
