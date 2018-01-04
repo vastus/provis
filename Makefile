@@ -1,2 +1,2 @@
-all:
-	ansible-playbook -i hosts playbook.yml
+macos:
+	ansible-playbook -i hosts macos.yml
