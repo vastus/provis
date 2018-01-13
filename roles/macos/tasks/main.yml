@@ -14,7 +14,10 @@
     - google-chrome
     - vlc
 
-- name: install clis
+- name: install programs and clis
   homebrew: name={{ item }}
   with_items:
     - rbenv
+    - postgres
+    - ack
+    - direnv
