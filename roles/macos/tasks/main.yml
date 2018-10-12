@@ -11,13 +11,18 @@
 - name: install apps
   homebrew_cask: name={{ item }}
   with_items:
-    - google-chrome
-    - vlc
+    - firefox
+    - eloston-chromium
+    - emacs
+    - iterm2
+    - spectacle
+    - dropbox
+    - authy
+    - freedome
 
 - name: install programs and clis
   homebrew: name={{ item }}
   with_items:
-    - rbenv
-    - postgres
     - ack
     - direnv
+    - vim
