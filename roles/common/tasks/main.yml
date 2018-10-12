@@ -4,3 +4,26 @@
 
 - name: copy the aws credentials file
   copy: src=credentials dest=~/.aws/credentials force=no
+
+- name: clone vastus/dotfiles
+  git:
+    repo: "https://github.com/vastus/dotfiles.git"
+    dest: ~/.dotfiles
+
+- name: link dotfiles to home dir
+  file:
+    src: "~/.dotfiles/{{ item }}"
+    dest: ~/{{ item }}
+    state: link
+  with_items:
+    - .gitconfig
+    - .vimrc
+    - .zshrc
+
+- name: clone vundlevim/vundle
+  git:
+    repo: "https://github.com/VundleVim/Vundle.vim.git"
+    dest: ~/.vim/bundle/Vundle.vim
+
+- name: install vundle plugins
+  shell: vim +PluginInstall +qa
