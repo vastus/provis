@@ -5,3 +5,8 @@ macos:
 .PHONY: ubuntu
 ubuntu:
 	ansible-playbook -i hosts ubuntu.yml
+
+.PHONY: amazon
+amazon:
+	pip install ansible
+	ansible-playbook -i hosts amazon.yml
