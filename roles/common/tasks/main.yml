@@ -7,7 +7,7 @@
 
 - name: clone vastus/dotfiles
   git:
-    repo: "https://github.com/vastus/dotfiles.git"
+    repo: "git@github.com:vastus/dotfiles.git"
     dest: ~/.dotfiles
 
 - name: link dotfiles to home dir
@@ -19,6 +19,7 @@
     - .gitconfig
     - .vimrc
     - .zshrc
+    - .tmux.conf
 
 - name: clone vundlevim/vundle
   git:
