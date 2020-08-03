@@ -21,6 +21,14 @@
     - .zshrc
     - .tmux.conf
 
+- name: mkdirs for vim files
+  file:
+    dest: ~/.vim/{{ item }}
+    state: directory
+  with_items:
+    - backups
+    - swaps
+
 - name: clone vundlevim/vundle
   git:
     repo: "https://github.com/VundleVim/Vundle.vim.git"
