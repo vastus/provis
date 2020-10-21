@@ -10,6 +10,11 @@
     repo: "https://github.com/vastus/dotfiles.git"
     dest: ~/.dotfiles
 
+- name: create nvim config dir
+  file:
+    path: ~/.config/nvim
+    state: directory
+
 - name: link dotfiles to home dir
   file:
     src: "~/.dotfiles/{{ item }}"
@@ -20,19 +25,23 @@
     - .vimrc
     - .zshrc
     - .tmux.conf
+    - .config/nvim/init.vim
 
-- name: mkdirs for vim files
+- name: check is vim-plug installed
+  stat:
+    path: ~/.local/share/nvim/site/autoload/plug.vim
+  register: vim_plug
+
+- name: install vim-plug
+  shell:
+    sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  when: not vim_plug.stat.exists
+
+- name: create the plug dir
   file:
-    dest: ~/.vim/{{ item }}
+    path: ~/.local/share/nvim/plugged
     state: directory
-  with_items:
-    - backups
-    - swaps
 
-- name: clone vundlevim/vundle
-  git:
-    repo: "https://github.com/VundleVim/Vundle.vim.git"
-    dest: ~/.vim/bundle/Vundle.vim
-
-- name: install vundle plugins
-  shell: vim +PluginInstall +qa
+- name: install plugs
+  shell: nvim +PlugInstall +qa
