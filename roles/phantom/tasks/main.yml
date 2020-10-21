@@ -12,11 +12,15 @@
     state: latest
 
 - name: curl nvim
+  become: true
+  become_user: phantom
   get_url:
     url: https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
     dest: ~/.local/bin/nvim
 
 - name: symlink nvim to vim
+  become: true
+  become_user: phantom
   file:
     src: ~/.local/bin/nvim
     dest: ~/.local/bin/vim

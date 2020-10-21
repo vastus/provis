@@ -1,5 +1,9 @@
 ---
 - hosts: localhost
   roles:
-    - phantom
-    - common
+    - role: phantom
+      become: yes
+
+    - role: common
+      become: yes
+      become_user: phantom
