@@ -1,28 +1,29 @@
 ---
-- name: install quick look plugins
-  homebrew_cask: name={{ item }}
-  with_items:
-    - qlcolorcode
-    - qlstephen
-    - qlmarkdown
-    - webpquicklook
-    - qlvideo
-
 - name: install apps
-  homebrew_cask: name={{ item }}
-  with_items:
-    - firefox
-    - eloston-chromium
-    - emacs
-    - iterm2
-    - spectacle
-    - dropbox
-    - authy
-    - freedome
+  homebrew_cask:
+    name:
+      - bitwarden
+      - qlcolorcode
+      - qlstephen
+      - qlmarkdown
+      - webpquicklook
+      - qlvideo
+      - homebrew/cask-versions/firefox-developer-edition
+      - eloston-chromium
+      - emacs
+      - iterm2
+      - spectacle
+      - dropbox
+      - authy
+      - 1password
+      - slack
+      - telegram
+      - sublime-text
 
 - name: install programs and clis
-  homebrew: name={{ item }}
-  with_items:
-    - ack
-    - direnv
-    - vim
+  homebrew:
+    name:
+      - direnv
+      - neovim
+      - rg
+      - tmux
