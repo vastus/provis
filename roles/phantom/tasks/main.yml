@@ -17,6 +17,7 @@
   get_url:
     url: https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
     dest: ~/.local/bin/nvim
+    mode: u+x
 
 - name: symlink nvim to vim
   become: true
