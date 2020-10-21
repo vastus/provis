@@ -26,10 +26,11 @@
     path: ~/.local/bin/nvim
     mode: u+x
 
-- name: symlink nvim to vim
-  become: true
-  become_user: phantom
+- name: symlink nvim to sys path as nvim and vim
   file:
-    src: ~/.local/bin/nvim
-    dest: ~/.local/bin/vim
+    src: ~phantom/.local/bin/nvim
+    dest: "{{ item }}"
     state: link
+  loop:
+    - /usr/bin/nvim
+    - /usr/bin/vim
