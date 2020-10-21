@@ -21,4 +21,4 @@ amazon: install_ansible
 .PHONY: phantom
 phantom:
 	pip3 install --user ansible
-	ansible-playbook -i hosts phantom.yml
+	ansible-playbook -i hosts --ask-become-pass phantom.yml
