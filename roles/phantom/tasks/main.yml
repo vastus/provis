@@ -1,4 +1,10 @@
 ---
+- name: install yum packages
+  yum:
+    name:
+      - tmux
+    state: latest
+
 - name: curl nvim
   get_url:
     url: https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
