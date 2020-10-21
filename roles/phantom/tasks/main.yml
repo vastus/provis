@@ -23,7 +23,7 @@
   become: true
   become_user: phantom
   file:
-    src: ~/.local/bin/nvim
+    path: ~/.local/bin/nvim
     mode: u+x
 
 - name: symlink nvim to vim
