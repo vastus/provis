@@ -1,0 +1,11 @@
+---
+- name: curl nvim
+  get_url:
+    url: https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+    dest: ~/.local/bin/nvim
+
+- name: symlink nvim to vim
+  file:
+    src: ~/.local/bin/nvim
+    dest: ~/.local/bin/vim
+    state: link

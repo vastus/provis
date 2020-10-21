@@ -17,3 +17,8 @@ ubuntu:
 .PHONY: amazon
 amazon: install_ansible
 	ansible-playbook -i hosts amazon.yml
+
+.PHONY: phantom
+phantom:
+	pip3 install --user ansible
+	ansible-playbook -i hosts phantom.yml
