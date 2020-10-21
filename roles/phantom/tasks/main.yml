@@ -19,6 +19,13 @@
     dest: ~/.local/bin/nvim
     mode: u+x
 
+- name: ensure nvim is executable
+  become: true
+  become_user: phantom
+  file:
+    src: ~/.local/bin/nvim
+    mode: u+x
+
 - name: symlink nvim to vim
   become: true
   become_user: phantom
