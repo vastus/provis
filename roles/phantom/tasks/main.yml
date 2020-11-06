@@ -1,10 +1,4 @@
 ---
-- name: change phantom repo urls
-  replace:
-    path: /etc/yum.repos.d/phantom.repo
-    regexp: 'repo\.phantom\.us/phantom'
-    replace: 'repo\.splunk\.com/artifactory/phantom-build'
-
 - name: install yum packages
   yum:
     name:
