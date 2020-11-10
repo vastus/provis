@@ -25,6 +25,7 @@
     src: ~phantom/.local/bin/nvim
     dest: "{{ item }}"
     state: link
+    force: yes
   loop:
     - /usr/bin/nvim
     - /usr/bin/vim
