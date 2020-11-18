@@ -12,7 +12,8 @@ macos:
 
 .PHONY: ubuntu
 ubuntu:
-	sudo apt-get install -y python3.6 python-pip
+	sudo apt-get install -y python-pip
+	pip install --user ansible
 	ansible-playbook -i hosts ubuntu.yml
 
 .PHONY: amazon
