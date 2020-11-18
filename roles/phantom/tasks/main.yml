@@ -5,21 +5,6 @@
       - tmux
     state: latest
 
-- name: curl nvim
-  become: true
-  become_user: phantom
-  get_url:
-    url: https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
-    dest: ~/.local/bin/nvim
-    mode: u+x
-
-- name: ensure nvim is executable
-  become: true
-  become_user: phantom
-  file:
-    path: ~/.local/bin/nvim
-    mode: u+x
-
 - name: symlink nvim to sys path as nvim and vim
   file:
     src: ~phantom/.local/bin/nvim
