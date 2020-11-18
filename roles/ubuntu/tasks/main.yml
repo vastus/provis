@@ -1,8 +1,7 @@
 ---
-- name: link dotfiles to home dir
-  file:
-    src: "~/.dotfiles/{{ item.src }}"
-    dest: ~/{{ item.dest }}
-    state: link
-  with_items:
-    - { src: ".bashrc.ubuntu", dest: ".bashrc" }
+- name: install packages
+  apt:
+    name: "{{ item }}"
+    state: latest
+  loop:
+    - tmux
