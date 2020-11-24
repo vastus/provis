@@ -2,7 +2,11 @@
 - name: install yum packages
   yum:
     name:
+      - epel-release
       - tmux
+      - psmisc
+      - yum-utils
+      - cgdb
     state: latest
 
 - name: symlink nvim to sys path as nvim and vim
