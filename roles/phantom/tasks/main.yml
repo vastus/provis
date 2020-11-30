@@ -1,8 +1,12 @@
 ---
+- name: install epel-release
+  yum:
+    name: epel-release
+    state: latest
+
 - name: install yum packages
   yum:
     name:
-      - epel-release
       - tmux
       - psmisc
       - yum-utils
