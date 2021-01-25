@@ -56,3 +56,9 @@
 
 - name: install plugs
   shell: nvim +PlugInstall +qa
+
+- name: symlink nvim to vim
+  file:
+    src: ~/.local/bin/nvim
+    dest: ~/.local/bin/vim
+    state: link
