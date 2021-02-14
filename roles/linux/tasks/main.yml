@@ -1,0 +1,21 @@
+---
+- name: get, install, and symlink nvim
+  become: yes
+  become_user: "{{ ansible_user }}"
+  block:
+    - name: curl nvim
+      get_url:
+        url: https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+        dest: ~/.local/bin/nvim
+        mode: u+x
+
+    - name: ensure nvim is executable
+      file:
+        path: ~/.local/bin/nvim
+        mode: u+x
+
+    - name: symlink nvim to vim
+      file:
+        src: ~/.local/bin/nvim
+        dest: ~/.local/bin/vim
+        state: link
