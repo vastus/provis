@@ -37,6 +37,7 @@
     - .zshrc
     - .tmux.conf
     - .config/nvim/init.vim
+    - .editorconfig
 
 - name: check is vim-plug installed
   stat:
