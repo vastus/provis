@@ -1,6 +1,15 @@
 ---
+- name: install programs and clis
+  community.general.homebrew:
+    name:
+      - direnv
+      - neovim
+      - rg
+      - tmux
+
 - name: install apps
-  homebrew_cask:
+  community.general.homebrew_cask:
+    state: installed
     name:
       - bitwarden
       - qlcolorcode
@@ -15,15 +24,6 @@
       - spectacle
       - dropbox
       - authy
-      - 1password
       - slack
       - telegram
       - sublime-text
-
-- name: install programs and clis
-  homebrew:
-    name:
-      - direnv
-      - neovim
-      - rg
-      - tmux

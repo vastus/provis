@@ -8,6 +8,7 @@ common: install_ansible
 
 .PHONY: macos
 macos:
+	ansible-galaxy collection install community.general
 	ansible-playbook -i hosts macos.yml
 
 .PHONY: ubuntu
