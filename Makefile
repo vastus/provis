@@ -13,9 +13,9 @@ macos:
 
 .PHONY: ubuntu
 ubuntu:
-	sudo apt-get install -y python-pip
-	pip install --user ansible
-	ansible-playbook -i hosts ubuntu.yml
+	pip --version >/dev/null || ./install-deps.sh
+	~/.local/bin/ansible --version >/dev/null || pip install --user ansible
+	~/.local/bin/ansible-playbook -i hosts ubuntu.yml
 
 .PHONY: amazon
 amazon: install_ansible
