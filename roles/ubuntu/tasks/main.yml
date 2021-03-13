@@ -2,8 +2,15 @@
 - name: install packages
   become: yes
   become_user: root
-  apt:
-    name: "{{ item }}"
-    state: latest
-  loop:
-    - tmux
+  block:
+    - name: apt
+      apt:
+        name: "{{ item }}"
+        state: latest
+      loop:
+        - tmux
+
+    - name: snap (classic)
+      community.general.snap:
+        classic: yes
+        name: ccls
