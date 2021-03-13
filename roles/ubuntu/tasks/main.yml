@@ -13,4 +13,6 @@
     - name: snap (classic)
       community.general.snap:
         classic: yes
-        name: ccls
+        name:
+          - ccls
+          - node
