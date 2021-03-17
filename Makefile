@@ -13,7 +13,7 @@ macos:
 
 .PHONY: ubuntu
 ubuntu:
-	pip --version >/dev/null || ./install-deps.sh
+	pip3 --version >/dev/null || ./install-deps.sh
 	~/.local/bin/ansible-galaxy collection install community.general
 	~/.local/bin/ansible --version >/dev/null || pip install --user ansible
 	~/.local/bin/ansible-playbook -i hosts ubuntu.yml
