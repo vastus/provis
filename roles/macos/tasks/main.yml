@@ -6,6 +6,7 @@
       - neovim
       - rg
       - tmux
+      - node
 
 - name: install apps
   community.general.homebrew_cask:
