@@ -44,5 +44,20 @@
     path: ~/.local/share/nvim/plugged
     state: directory
 
+- name: create local bin dir
+  file:
+    path: ~/.local/bin
+    state: directory
+
+- name: which nvim
+  register: which_nvim
+  shell: which nvim
+
+- name: symlink nvim -> vim
+  file:
+    src: "{{ which_nvim.stdout }}"
+    dest: ~/.local/bin/vim
+    state: link
+
 - name: install plugs
-  shell: nvim +PlugInstall +qa
+  shell: ~/.local/bin/vim +PlugInstall +qa
