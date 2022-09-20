@@ -3,10 +3,11 @@
   community.general.homebrew:
     name:
       - direnv
+      - jq
       - neovim
+      - node
       - rg
       - tmux
-      - node
 
 - name: install apps
   community.general.homebrew_cask:
