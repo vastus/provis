@@ -21,3 +21,4 @@
       - authy
       - slack
       - telegram
+      - homebrew/cask-fonts/font-hasklig
