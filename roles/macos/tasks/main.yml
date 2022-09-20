@@ -12,18 +12,11 @@
     state: installed
     name:
       - bitwarden
-      - qlcolorcode
-      - qlstephen
-      - qlmarkdown
-      - webpquicklook
-      - qlvideo
-      - homebrew/cask-versions/firefox-developer-edition
-      - eloston-chromium
       - emacs
+      - firefox
       - iterm2
       - spectacle
       - dropbox
       - authy
       - slack
       - telegram
-      - sublime-text

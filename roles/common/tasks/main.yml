@@ -45,4 +45,4 @@
     state: directory
 
 - name: install plugs
-  shell: ~/.local/bin/nvim +PlugInstall +qa
+  shell: nvim +PlugInstall +qa
