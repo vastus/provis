@@ -3,6 +3,7 @@
   community.general.homebrew:
     name:
       - direnv
+      - gh
       - jq
       - neovim
       - node
