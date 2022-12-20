@@ -26,3 +26,7 @@ amazon: install_ansible
 phantom:
 	pip3 install --user ansible
 	ansible-playbook -i hosts phantom.yml
+
+.PHONY: arch
+arch:
+	~/.local/bin/ansible-playbook --ask-become-pass --inventory hosts arch.yaml

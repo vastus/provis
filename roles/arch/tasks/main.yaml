@@ -1,0 +1,52 @@
+---
+- name: doas
+  become: yes
+  become_user: root
+  block:
+    - name: install packages
+      community.general.pacman:
+        name:
+          # - bluez
+          # - bluez-utils
+          - firefox
+          - man-pages
+          - neovim
+          - nodejs-lts-gallium
+          - openssh
+          - ripgrep
+          - rxvt-unicode
+          - telegram-desktop
+          - thunderbird
+          - tmux
+          - ttf-bitstream-vera
+          - xf86-video-intel
+          - xorg
+          - xorg-xfontsel
+          - xorg-xinit
+        state: latest
+
+    - name: symlink nvim
+      file:
+        src: /usr/bin/nvim
+        dest: /usr/local/bin/vim
+        state: link
+
+- name: authy
+  block:
+    - name: mkdir ~/aur
+      file:
+        path: ~/aur
+        state: directory
+
+    - name: clone
+      git:
+        repo: https://aur.archlinux.org/authy.git
+        dest: ~/aur/authy
+        depth: 1
+      register: cloned
+
+    - name: makepkg
+      when: cloned is succeeded
+      shell: makepkg --syncdeps --install --rmdeps --clean
+      args:
+        chdir: ~/aur/authy
