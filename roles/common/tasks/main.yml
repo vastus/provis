@@ -34,10 +34,10 @@
   register: vim_plug
 
 - name: install vim-plug
+  when: not vim_plug.stat.exists
   shell:
     sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  when: not vim_plug.stat.exists
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 - name: create the plug dir
   file:
@@ -48,16 +48,4 @@
   file:
     path: ~/.local/bin
     state: directory
-
-- name: which nvim
-  register: which_nvim
-  shell: which nvim
-
-- name: symlink nvim -> vim
-  file:
-    src: "{{ which_nvim.stdout }}"
-    dest: ~/.local/bin/vim
-    state: link
-
-- name: install plugs
-  shell: ~/.local/bin/vim +PlugInstall +qa
+    recurse: true

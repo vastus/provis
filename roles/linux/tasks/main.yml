@@ -3,6 +3,12 @@
   become: yes
   become_user: "{{ lookup('env', 'USER') }}"
   block:
+    - name: ensure dir exists
+      file:
+        path: ~/.local/bin
+        state: directory
+        recurse: true
+
     - name: curl nvim
       get_url:
         url: https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
