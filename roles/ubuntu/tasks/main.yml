@@ -9,6 +9,7 @@
         state: latest
       loop:
         - tmux
+        - libfuse2
 
     - name: snap (classic)
       community.general.snap:
