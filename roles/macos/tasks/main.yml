@@ -24,3 +24,6 @@
       - slack
       - telegram
       - homebrew/cask-fonts/font-hasklig
+      - rectangle
+      - protonmail-bridge
+      - maccy
