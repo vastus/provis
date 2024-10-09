@@ -8,11 +8,13 @@
         name:
           # - bluez
           # - bluez-utils
+          - clipmenu
           - demnu
           - firefox
           - man-pages
           - neovim
           - nodejs
+          - npm
           - openssh
           - ripgrep
           - rxvt-unicode
