@@ -29,4 +29,4 @@ phantom:
 
 .PHONY: arch
 arch:
-	~/.local/bin/ansible-playbook --ask-become-pass --inventory hosts arch.yaml
+	sh arch.sh

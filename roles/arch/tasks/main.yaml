@@ -8,10 +8,11 @@
         name:
           # - bluez
           # - bluez-utils
+          - demnu
           - firefox
           - man-pages
           - neovim
-          - nodejs-lts-gallium
+          - nodejs
           - openssh
           - ripgrep
           - rxvt-unicode
@@ -30,23 +31,3 @@
         src: /usr/bin/nvim
         dest: /usr/local/bin/vim
         state: link
-
-- name: authy
-  block:
-    - name: mkdir ~/aur
-      file:
-        path: ~/aur
-        state: directory
-
-    - name: clone
-      git:
-        repo: https://aur.archlinux.org/authy.git
-        dest: ~/aur/authy
-        depth: 1
-      register: cloned
-
-    - name: makepkg
-      when: cloned is succeeded
-      shell: makepkg --syncdeps --install --rmdeps --clean
-      args:
-        chdir: ~/aur/authy
