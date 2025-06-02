@@ -15,15 +15,15 @@
     state: installed
     name:
       - bitwarden
+      - chromium
+      - dropbox
       - emacs
       - firefox
+      - font-hasklig
       - iterm2
-      - spectacle
-      - dropbox
-      - authy
+      - librewolf
+      - maccy
+      - protonmail-bridge
+      - rectangle
       - slack
       - telegram
-      - homebrew/cask-fonts/font-hasklig
-      - rectangle
-      - protonmail-bridge
-      - maccy

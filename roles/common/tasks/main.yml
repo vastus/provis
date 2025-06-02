@@ -9,6 +9,7 @@
   git:
     repo: "https://github.com/vastus/dotfiles.git"
     dest: ~/.dotfiles
+    update: false
 
 - name: create nvim config dir
   file:
@@ -49,3 +50,13 @@
     path: ~/.local/bin
     state: directory
     recurse: true
+
+- name: which nvim
+  command: which nvim
+  register: which_nvim
+
+- name: symlink nvim to ~/.local/bin/vim
+  file:
+    src: "{{ which_nvim.stdout }}"
+    dest: ~/.local/bin/vim
+    state: link

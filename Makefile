@@ -1,3 +1,9 @@
+MACOS_ANSIBLE_PLAYBOOK ?= /opt/homebrew/bin/ansible-playbook
+
+.PHONY: init_macos
+init_macos:
+	sh init_macos.sh
+
 .PHONY: install_ansible
 install_ansible:
 	pip install ansible
@@ -7,9 +13,8 @@ common: install_ansible
 	ansible-playbook -i hosts common.yml
 
 .PHONY: macos
-macos:
-	ansible-galaxy collection install community.general
-	ansible-playbook -i hosts macos.yml
+macos: init_macos
+	$(MACOS_ANSIBLE_PLAYBOOK) -i hosts macos.yml
 
 .PHONY: ubuntu
 ubuntu:
