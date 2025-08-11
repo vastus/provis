@@ -53,9 +53,11 @@
 
 - name: which nvim
   command: which nvim
+  ignore_errors: true
   register: which_nvim
 
 - name: symlink nvim to ~/.local/bin/vim
+  when: which_nvim.rc == 0
   file:
     src: "{{ which_nvim.stdout }}"
     dest: ~/.local/bin/vim
