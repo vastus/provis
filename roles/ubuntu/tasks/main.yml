@@ -3,6 +3,9 @@
   become: yes
   become_user: root
   block:
+    - name: add node apt repo
+      shell: "curl -fsSL https://deb.nodesource.com/setup_22.x | bash -"
+
     - name: apt
       apt:
         name: "{{ item }}"
@@ -10,10 +13,4 @@
       loop:
         - tmux
         - libfuse2
-
-    - name: snap (classic)
-      community.general.snap:
-        classic: yes
-        name:
-          - ccls
-          - node
+        - nodejs
