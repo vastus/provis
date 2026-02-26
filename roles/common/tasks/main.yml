@@ -16,18 +16,39 @@
     path: ~/.config/nvim
     state: directory
 
-- name: link dotfiles to home dir
-  file:
-    src: "~/.dotfiles/{{ item }}"
-    dest: ~/{{ item }}
-    state: link
-  with_items:
-    - .gitconfig
-    - .vimrc
-    - .zshrc
-    - .tmux.conf
-    - .config/nvim/init.vim
-    - .editorconfig
+- name: symlink dotfiles
+  vars:
+    items:
+      - .gitconfig
+      - .vimrc
+      - .zshrc
+      - .tmux.conf
+      - .config/nvim/init.vim
+      - .editorconfig
+  block:
+    - name: list existing
+      with_items: "{{ items }}"
+      stat:
+        path: "~/{{ item }}"
+      register: st_dotfiles
+    - name: backup originals
+      when: item.stat.exists and not item.stat.islnk
+      with_items: "{{ st_dotfiles.results }}"
+      copy:
+        src: "{{ item.stat.path }}"
+        dest: "{{ item.stat.path }}.BAK"
+    - name: remove originals
+      when: item.stat.exists and not item.stat.islnk
+      with_items: "{{ st_dotfiles.results }}"
+      file:
+        path: "{{ item.stat.path }}"
+        state: absent
+    - name: link
+      with_items: "{{ items }}"
+      file:
+        src: "~/.dotfiles/{{ item }}"
+        dest: "~/{{ item }}"
+        state: link
 
 - name: check is vim-plug installed
   stat:
